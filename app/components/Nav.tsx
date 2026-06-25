@@ -4,92 +4,49 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
-const links = [
-  { href: "#home",       label: "Home" },
-  { href: "#about",      label: "About" },
-  { href: "#projects",   label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact",    label: "Contact" },
-];
-
 export default function Nav() {
   const pathname = usePathname();
   const isCase = pathname?.startsWith("/work/");
-  const [active, setActive] = useState("Home");
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    if (isCase) return;
-    const ids = links.map((l) => l.href.slice(1));
-    const onScroll = () => {
-      for (let i = ids.length - 1; i >= 0; i--) {
-        const el = document.getElementById(ids[i]);
-        if (el && window.scrollY >= el.offsetTop - 100) {
-          setActive(links[i].label);
-          return;
-        }
-      }
-      setActive("Home");
-    };
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [isCase]);
+  }, []);
 
   return (
-    <header style={{
-      position: "sticky", top: 0, zIndex: 100,
-      background: "rgba(238,240,236,0.88)",
-      backdropFilter: "blur(12px)",
-      WebkitBackdropFilter: "blur(12px)",
-      borderBottom: "1px solid rgba(28,43,42,0.12)",
-    }}>
-      <div style={{
-        maxWidth: "var(--max, 860px)",
-        margin: "0 auto",
-        padding: "16px clamp(20px,5vw,48px)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        gap: 24,
-      }}>
-        {/* Wordmark */}
-        <Link href="/" style={{
-          fontFamily: "var(--font-dm-serif), Georgia, serif",
-          fontSize: "1.15rem",
-          color: "#1C2B2A",
-          letterSpacing: "-0.01em",
-          whiteSpace: "nowrap",
-          textDecoration: "none",
-        }}>
-          Keita Lee Willmott
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-[#FAFAF8]/90 backdrop-blur border-b border-[#E2DDD7]" : ""
+      }`}
+    >
+      <div className="max-w-[1100px] mx-auto px-8 md:px-16 h-16 flex items-center justify-between">
+        <Link
+          href="/"
+          className="font-serif text-lg text-[#1C1917] hover:text-[#6B6460] transition-colors"
+        >
+          KL
         </Link>
 
-        {/* Nav links */}
-        <nav style={{ display: "flex", gap: 28, flexWrap: "wrap", listStyle: "none" }}>
+        <div className="flex items-center gap-8">
           {isCase ? (
-            <Link href="/#projects" style={{
-              fontSize: "0.82rem", fontWeight: 500,
-              letterSpacing: "0.08em", textTransform: "uppercase",
-              color: "#4A5E5C", textDecoration: "none",
-            }}>
-              ← All work
+            <Link
+              href="/#work"
+              className="text-sm text-[#6B6460] hover:text-[#1C1917] transition-colors flex items-center gap-2"
+            >
+              <span>←</span> All work
             </Link>
           ) : (
-            links.map((l) => (
-              <a key={l.href} href={l.href}
-                onClick={() => setActive(l.label)}
-                style={{
-                  fontSize: "0.82rem", fontWeight: 500,
-                  letterSpacing: "0.08em", textTransform: "uppercase",
-                  color: active === l.label ? "#01A896" : "#4A5E5C",
-                  textDecoration: "none",
-                  transition: "color 0.15s",
-                }}>
-                {l.label}
-              </a>
-            ))
+            <>
+              <a href="#about" className="text-sm text-[#6B6460] hover:text-[#1C1917] transition-colors">About</a>
+              <a href="#projects" className="text-sm text-[#6B6460] hover:text-[#1C1917] transition-colors">Projects</a>
+              <a href="#experience" className="text-sm text-[#6B6460] hover:text-[#1C1917] transition-colors">Experience</a>
+              <a href="#contact" className="text-sm text-[#6B6460] hover:text-[#1C1917] transition-colors">Contact</a>
+            </>
           )}
-        </nav>
+        </div>
       </div>
-    </header>
+    </nav>
   );
 }

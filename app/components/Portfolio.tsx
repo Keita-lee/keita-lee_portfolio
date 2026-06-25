@@ -1,8 +1,4 @@
-"use client";
-
 import styles from "./Portfolio.module.css";
-import OrbitWidget from "./OrbitWidget";
-import Link from "next/link";
 
 export default function Portfolio() {
   return (
@@ -74,49 +70,42 @@ export default function Portfolio() {
       <section className={`${styles.section}`} id="about" aria-label="About">
         <div className={styles.wrap}>
           <span className={styles.eyebrow}>About</span>
-          <div style={{ display: "flex", gap: "clamp(32px,6vw,80px)", alignItems: "flex-start", flexWrap: "wrap" }}>
-            <div style={{ flex: 1, minWidth: 260 }}>
-              <h2 className={styles.sectionHeading}>
-                Full-cycle builder
-                <br />
-                across design &amp; code
-              </h2>
-              <p className={styles.aboutBio}>
-                Product, UX, and software professional at Otomatika, where I build
-                WhatsApp automation systems and digital products for fibertime™. I
-                work across the full delivery cycle — designing user flows, planning
-                automation, supporting QA, and collaborating with developers.
-                Passionate about building user-focused digital products that balance
-                usability with operational efficiency, and growing my expertise in
-                Product Management, UX Design, and Software Development.
-              </p>
-              <p className={styles.aboutSkillsLabel}>Skills &amp; tools</p>
-              <ul className={styles.skillsList} aria-label="Skills">
-                {[
-                  "Flutter & Dart",
-                  "Product Planning",
-                  "UX Design",
-                  "Figma & FigJam",
-                  "Python",
-                  "Django",
-                  "QA & Testing",
-                  "Automation Systems",
-                  "GitHub / Bitbucket",
-                  "Vercel",
-                  "Firebase",
-                  "PostgreSQL",
-                  "Technical Documentation",
-                ].map((skill) => (
-                  <li key={skill} className={styles.skillChip}>
-                    {skill}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div style={{ flexShrink: 0, alignSelf: "center" }}>
-              <OrbitWidget />
-            </div>
-          </div>
+          <h2 className={styles.sectionHeading}>
+            Full-cycle builder
+            <br />
+            across design &amp; code
+          </h2>
+          <p className={styles.aboutBio}>
+            Product, UX, and software professional at Otomatika, where I build
+            WhatsApp automation systems and digital products for fibertime™. I
+            work across the full delivery cycle — designing user flows, planning
+            automation, supporting QA, and collaborating with developers.
+            Passionate about building user-focused digital products that balance
+            usability with operational efficiency, and growing my expertise in
+            Product Management, UX Design, and Software Development.
+          </p>
+          <p className={styles.aboutSkillsLabel}>Skills &amp; tools</p>
+          <ul className={styles.skillsList} aria-label="Skills">
+            {[
+              "Flutter & Dart",
+              "Product Planning",
+              "UX Design",
+              "Figma & FigJam",
+              "Python",
+              "Django",
+              "QA & Testing",
+              "Automation Systems",
+              "GitHub / Bitbucket",
+              "Vercel",
+              "Firebase",
+              "PostgreSQL",
+              "Technical Documentation",
+            ].map((skill) => (
+              <li key={skill} className={styles.skillChip}>
+                {skill}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -278,32 +267,6 @@ export default function Portfolio() {
               </a>
             </div>
           </article>
-
-          {/* Yaga case study card */}
-          <Link href="/work/yaga/" style={{ textDecoration: "none", display: "block", marginBottom: 24 }}>
-            <article className={styles.featuredCard} style={{ marginBottom: 0 }}>
-              <div style={{ height: 4, background: "#1C2B2A", width: "100%" }} />
-              <div className={styles.featuredBody}>
-                <div className={styles.featuredMeta}>
-                  <span className={`${styles.tag} ${styles.tagFeatured}`} style={{ background: "rgba(28,43,42,0.06)", color: "#4A5E5C", borderColor: "rgba(28,43,42,0.2)" }}>
-                    Case Study
-                  </span>
-                  <span className={`${styles.tag} ${styles.tagType}`}>UX Design · Mobile</span>
-                  <span className={styles.featuredYear}>2024</span>
-                </div>
-                <h3 className={styles.featuredTitle} style={{ fontSize: "clamp(1.3rem,3vw,1.8rem)" }}>
-                  Yaga Listing &amp; Drop Flow
-                </h3>
-                <p className={styles.featuredRole}>UX Designer</p>
-                <p className={styles.featuredDesc}>
-                  Streamlining the seller upload experience to reduce drop-offs while
-                  maintaining database integrity. Conditional form logic, image compression
-                  edge cases, and database-aware UI design.
-                </p>
-                <span className={styles.projectLink}>View case study →</span>
-              </div>
-            </article>
-          </Link>
 
           {/* Regular project grid */}
           <div className={styles.projectsGrid}>
