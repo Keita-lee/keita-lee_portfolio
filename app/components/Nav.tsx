@@ -32,7 +32,7 @@ export default function Nav() {
         <div className="flex items-center gap-8">
           {isCase ? (
             <Link
-              href="/#work"
+              href="/#projects"
               className="text-sm text-[#6B6460] hover:text-[#1C1917] transition-colors flex items-center gap-2"
             >
               <span>←</span> All work

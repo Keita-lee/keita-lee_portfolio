@@ -115,7 +115,7 @@ export default function Portfolio() {
           <span className={styles.eyebrow}>Projects</span>
           <h2 className={styles.sectionHeading}>Selected work</h2>
           <p className={styles.sectionSub}>
-            A selection of projects I've designed and built — spanning mobile
+            A selection of projects I&apos;ve designed and built — spanning mobile
             apps, automation systems, and learning platforms.
           </p>
 
@@ -539,7 +539,7 @@ export default function Portfolio() {
       <section className={styles.section} id="contact" aria-label="Contact">
         <div className={styles.wrap}>
           <span className={styles.eyebrow}>Contact</span>
-          <h2 className={styles.sectionHeading}>Let's work together</h2>
+          <h2 className={styles.sectionHeading}>Let&apos;s work together</h2>
           <p className={styles.sectionSub}>
             Open to new opportunities and challenges. If you have a project or
             position that might be a good fit, reach out through any of the

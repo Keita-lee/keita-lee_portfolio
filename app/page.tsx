@@ -174,9 +174,9 @@ export default function Home() {
             <em className="text-[#01A896]">Willmott</em>
           </h1>
 
-          <p className="text-lg leading-relaxed text-[#6B6460] max-w-[520px] mb-12 font-light">
-            Crafting user-focused digital products — from WhatsApp automation
-            flows to Flutter apps — built for the people who actually use them.
+          <p className="text-lg leading-relaxed text-[#6B6460] max-w-[560px] mb-12 font-light">
+            I make complex products feel simple — designing flows, improving data
+            capture, and shipping work that holds up in the real world.
           </p>
 
           <div className="flex items-center gap-4 flex-wrap mb-16">
@@ -192,11 +192,11 @@ export default function Home() {
 
           <div className="flex gap-10 flex-wrap pt-10 border-t border-[#2E2B28]">
             {[
-              { num: "800–1k", label: "router activations\nprocessed per day" },
-              { num: "6+",     label: "shipped products\nacross mobile & web" },
-              { num: "3+",     label: "years in Flutter\ndevelopment" },
+              { num: "800–1k",     label: "daily user journeys\nthrough redesigned WhatsApp flows" },
+              { num: "6+",         label: "products shipped\nfrom concept to release" },
+              { num: "Full-cycle", label: "design, QA & delivery\nacross mobile & automation" },
             ].map((s) => (
-              <div key={s.num}>
+              <div key={s.label}>
                 <div className="font-serif text-[2.2rem] leading-none text-[#C07B3A]">{s.num}</div>
                 <div className="text-xs text-[#5A5652] mt-1 leading-relaxed whitespace-pre-line">{s.label}</div>
               </div>
@@ -247,110 +247,37 @@ export default function Home() {
           </p>
 
           {/* Featured: fibertime */}
-          <article className="bg-[#F8F9F7] rounded-2xl overflow-hidden border border-[#E2DDD7] mb-6">
-            <div className="h-1 w-full" style={{ background: "linear-gradient(90deg,#01D9F3,#E8B800)" }} />
-            <div className="p-8 md:p-11">
-              <div className="flex items-center gap-3 flex-wrap mb-5">
-                <span className="text-[0.7rem] font-bold tracking-[0.12em] uppercase text-[#01A896] bg-[rgba(1,216,243,0.1)] border border-[rgba(1,168,150,0.3)] rounded-full px-3 py-1">
-                  ★ Featured
-                </span>
-                <span className="text-[0.7rem] font-bold tracking-[0.12em] uppercase text-[#01A896]">
-                  WhatsApp Bot
-                </span>
-                <span className="text-[0.75rem] text-[#A09A95] font-medium">2025–2026</span>
-              </div>
-
-              <h3 className="font-serif text-[clamp(1.7rem,4vw,2.5rem)] leading-tight tracking-tight text-[#1C1917] mb-2">
-                fibertime™ WhatsApp Chatbot
-              </h3>
-              <p className="text-[0.83rem] text-[#A09A95] mb-5">UX Designer &amp; QA Lead</p>
-              <p className="text-[0.97rem] leading-relaxed text-[#6B6460] max-w-[600px] mb-7">
-                fibertime™ processes 800–1,000 router activations daily across
-                South Africa — all through a WhatsApp bot that requires no app
-                download. I joined as UX designer and QA lead to redesign core
-                interaction flows, replace a broken location system, and ship
-                structured data-capture forms that cut manual entry errors.
-              </p>
-
-              <div className="inline-flex items-baseline gap-2.5 bg-[rgba(1,168,150,0.06)] border border-[rgba(1,168,150,0.2)] rounded-xl px-5 py-3.5 mb-7">
-                <span className="font-serif text-[2rem] text-[#01A896] leading-none">800–1,000</span>
-                <span className="text-[0.82rem] text-[#6B6460] leading-snug max-w-[200px]">
-                  activations per day<br />processed through the bot
-                </span>
-              </div>
-
-              <SubLabel>Problems solved</SubLabel>
-              <div className="grid gap-4 mb-7" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))" }}>
-                {[
-                  { num: "01", label: "Location accuracy", title: "OnMap assigned agents to the wrong address", desc: "The existing location system was unreliable in high-density areas — field agents regularly arrived at incorrect addresses, wasting time and delaying activations." },
-                  { num: "02", label: "Data entry errors", title: "Customer details typed freehand into chat", desc: "Agents manually typed names, phone numbers, and contact details as WhatsApp messages — no structure, no validation, and errors that reached back-office systems." },
-                  { num: "03", label: "Accessibility gap", title: "The tool wasn't built for the people using it", desc: "Field agents and customers across high-density communities needed a tool that worked on any Android without downloading an app. WhatsApp meets them where they are." },
-                ].map((p) => (
-                  <div key={p.num} className="p-4 bg-[#FAFAF8] rounded-xl border-l-[3px] border-[#C07B3A]">
-                    <div className="text-[0.68rem] font-bold tracking-[0.12em] uppercase text-[#C07B3A] mb-1.5">{p.num} — {p.label}</div>
-                    <div className="text-[0.88rem] font-semibold text-[#1C1917] mb-1.5 leading-tight">{p.title}</div>
-                    <div className="text-[0.8rem] text-[#6B6460] leading-relaxed">{p.desc}</div>
+          <Link href="/work/fibertime/" className="block mb-6">
+            <article className="bg-[#F8F9F7] rounded-2xl overflow-hidden border border-[#E2DDD7] hover:border-[#C8C4BC] hover:shadow-sm transition-all duration-200 group">
+              <div className="h-1 w-full bg-[#1C1917]" />
+              <div className="p-8 md:p-11 flex flex-col md:flex-row md:items-center gap-8">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 flex-wrap mb-5">
+                    <span className="text-[0.7rem] font-bold tracking-[0.12em] uppercase text-[#78716C] bg-[#F0EDE8] border border-[#E2DDD7] rounded-full px-3 py-1">
+                      Featured Case Study
+                    </span>
+                    <span className="text-[0.7rem] font-bold tracking-[0.12em] uppercase text-[#78716C]">
+                      UX &amp; QA · WhatsApp
+                    </span>
+                    <span className="text-[0.75rem] text-[#A09A95] font-medium">2025–2026</span>
                   </div>
-                ))}
-              </div>
-
-              <blockquote className="text-[0.95rem] italic text-[#6B6460] border-l-[3px] border-[#01A896] pl-4 py-3 bg-[rgba(1,168,150,0.04)] rounded-r-md mb-6 leading-relaxed">
-                Key insight: replace sequential free-text questions with a
-                native WhatsApp form template — capturing all customer
-                information through a single, guided form instead of an
-                open-ended back-and-forth.
-              </blockquote>
-
-              <SubLabel>Key features</SubLabel>
-              <div className="grid gap-3.5 mt-3 mb-7" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))" }}>
-                {[
-                  { title: "Location-Based Assignment", desc: "Agent shares live location; system displays nearby homes on a map for efficient routing." },
-                  { title: "Home Assignment via FTM API", desc: "Agent selects a home from the map; system assigns it through the FTM API, syncing with back-office." },
-                  { title: "Structured Data Capture", desc: "Captures customer name, phone numbers, and contact details during activation — no paperwork." },
-                  { title: "AI-Powered Device Capture", desc: "Uses AI OCR to extract DR and Serial Numbers directly from a router photo, eliminating manual entry errors." },
-                ].map((f) => (
-                  <div key={f.title} className="p-4 bg-[#FAFAF8] rounded-xl">
-                    <div className="text-[0.85rem] font-semibold text-[#1C1917] mb-1.5">{f.title}</div>
-                    <div className="text-[0.78rem] text-[#6B6460] leading-relaxed">{f.desc}</div>
-                  </div>
-                ))}
-              </div>
-
-              <SubLabel>QA process (every release)</SubLabel>
-              <ul className="grid gap-1.5 mt-3 mb-7 list-none p-0">
-                {[
-                  "Users informed of upcoming changes before each release",
-                  "Client demo with hands-on testing opportunity",
-                  "Deployment ticket created with full update documentation",
-                  "Developer and product documentation updated",
-                  "All flows tested on UAT number before go-live",
-                  "Figma flows updated to reflect the shipped state",
-                  "Regression testing completed across all four bot flows",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-[0.85rem] text-[#6B6460] leading-relaxed">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#01A896] shrink-0 mt-[7px]" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              <SubLabel>Technologies</SubLabel>
-              <div className="flex flex-wrap gap-2 mb-6 mt-3">
-                {["Figma", "FigJam", "Django", "Twilio", "Python", "GitHub", "Bitbucket", "WhatsApp Business API"].map((t) => (
-                  <span key={t} className="text-[0.75rem] font-semibold text-[#6B6460] border border-[#E2DDD7] rounded-md px-2.5 py-1">
-                    {t}
+                  <h3 className="font-serif text-[clamp(1.4rem,3vw,2rem)] leading-tight tracking-tight text-[#1C1917] mb-3 group-hover:text-[#3A3733] transition-colors">
+                    fibertime™ WhatsApp Chatbot
+                  </h3>
+                  <p className="text-[0.97rem] leading-relaxed text-[#6B6460] max-w-[500px] mb-4">
+                    800–1,000 router activations daily across South Africa — no
+                    app download. I redesigned core flows, replaced a broken location
+                    system, and shipped structured data-capture forms.
+                  </p>
+                  <span className="text-[0.8rem] font-semibold text-[#01A896]">
+                    View case study →
                   </span>
-                ))}
+                </div>
               </div>
+            </article>
+          </Link>
 
-              <a href="https://fibertime.com/" target="_blank" rel="noopener noreferrer"
-                className="text-[0.8rem] font-semibold text-[#01A896] hover:underline">
-                Visit fibertime.com →
-              </a>
-            </div>
-          </article>
-
-          {/* Yaga case study card */}
+          {/* Yaga proactive project card */}
           <Link href="/work/yaga/" className="block mb-6">
             <article className="bg-[#F8F9F7] rounded-2xl overflow-hidden border border-[#E2DDD7] hover:border-[#C8C4BC] hover:shadow-sm transition-all duration-200 group">
               <div className="h-1 w-full bg-[#1C1917]" />
@@ -358,7 +285,7 @@ export default function Home() {
                 <div className="flex-1">
                   <div className="flex items-center gap-3 flex-wrap mb-5">
                     <span className="text-[0.7rem] font-bold tracking-[0.12em] uppercase text-[#78716C] bg-[#F0EDE8] border border-[#E2DDD7] rounded-full px-3 py-1">
-                      Case Study
+                      Proactive Project
                     </span>
                     <span className="text-[0.7rem] font-bold tracking-[0.12em] uppercase text-[#78716C]">
                       UX Design · Mobile
@@ -369,15 +296,12 @@ export default function Home() {
                     Yaga Listing &amp; Drop Flow
                   </h3>
                   <p className="text-[0.97rem] leading-relaxed text-[#6B6460] max-w-[500px] mb-4">
-                    Streamlining the seller upload experience to reduce drop-offs
-                    while maintaining database integrity.
+                    How I would streamline the seller upload experience to reduce
+                    drop-offs while maintaining database integrity.
                   </p>
                   <span className="text-[0.8rem] font-semibold text-[#01A896]">
-                    View case study →
+                    View project →
                   </span>
-                </div>
-                <div className="shrink-0 text-[#E2DDD7] text-5xl font-serif group-hover:text-[#C8C4BC] transition-colors">
-                  01
                 </div>
               </div>
             </article>
@@ -529,13 +453,5 @@ function Eyebrow({ children, bright }: { children: React.ReactNode; bright?: boo
     <span className={`block text-[0.72rem] font-semibold tracking-[0.14em] uppercase mb-4 ${bright ? "text-[#01A896]" : "text-[#01A896]"}`}>
       {children}
     </span>
-  );
-}
-
-function SubLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-[0.72rem] font-bold tracking-[0.12em] uppercase text-[#A09A95] mb-3 mt-6 block">
-      {children}
-    </p>
   );
 }

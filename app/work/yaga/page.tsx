@@ -4,7 +4,7 @@ import CategoryDemo from "./CategoryDemo";
 export const metadata = {
   title: "Yaga Listing & Drop Flow — Keita Lee",
   description:
-    "Optimizing the Yaga listing and drop flow: a UX case study on reducing seller drop-offs while maintaining database integrity.",
+    "Proactive UX project: how I would redesign the Yaga listing and drop flow to reduce seller drop-offs while maintaining database integrity.",
 };
 
 export default function YagaCaseStudy() {
@@ -33,7 +33,7 @@ export default function YagaCaseStudy() {
 
         <div className="max-w-[1100px] relative animate-fade-up">
           <div className="flex gap-2 mb-12 flex-wrap">
-            {["UX Design", "Product Thinking", "Mobile · 2024"].map((tag) => (
+            {["Proactive Project", "UX Design", "Mobile · 2024"].map((tag) => (
               <span
                 key={tag}
                 className="text-[11px] font-medium tracking-[0.1em] uppercase text-[#5A5652] border border-[#2E2B28] px-3.5 py-1.5 rounded-full"
@@ -61,7 +61,7 @@ export default function YagaCaseStudy() {
               </span>
             </div>
             <span className="text-[#3A3733]">·</span>
-            <span className="text-[13px] text-[#5A5652]">Case Study 01</span>
+            <span className="text-[13px] text-[#5A5652]">Proactive Project</span>
           </div>
         </div>
       </section>
@@ -77,6 +77,11 @@ export default function YagaCaseStudy() {
               <h2 className="font-serif text-[clamp(28px,4vw,50px)] leading-tight font-normal mb-7 text-balance">
                 A high-friction form<br />on a small mobile screen
               </h2>
+              <p className="text-[13px] leading-relaxed text-[#A09A95] mb-6 font-light italic border-l-2 border-[#3A3733] pl-4">
+                Concept case study — not affiliated with Yaga. Based on
+                observing the public listing flow and how I would approach a
+                redesign.
+              </p>
               <p className="text-[17px] leading-relaxed text-[#6B6460] mb-12 font-light">
                 In a secondhand marketplace, the listing form is the primary
                 revenue touchpoint. Sellers who abandon mid-form mean lost
@@ -319,9 +324,14 @@ export default function YagaCaseStudy() {
           </div>
 
           <div className="flex justify-between items-center pt-10 border-t border-[#E2DDD7] flex-wrap gap-4">
-            <div className="font-serif text-xl text-[#1C1917]">Case Study 01</div>
-            <div className="text-xs text-[#B0AAA4] tracking-[0.04em]">
-              Yaga Listing &amp; Drop Flow
+            <div className="font-serif text-xl text-[#1C1917]">Proactive Project</div>
+            <div className="flex items-center gap-4 flex-wrap">
+              <a href="/work/fibertime/" className="text-xs text-[#01A896] hover:underline tracking-[0.04em]">
+                See also: fibertime Case Study →
+              </a>
+              <span className="text-xs text-[#B0AAA4] tracking-[0.04em]">
+                Yaga Listing &amp; Drop Flow
+              </span>
             </div>
           </div>
         </div>
