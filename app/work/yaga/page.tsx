@@ -326,8 +326,11 @@ export default function YagaCaseStudy() {
           <div className="flex justify-between items-center pt-10 border-t border-[#E2DDD7] flex-wrap gap-4">
             <div className="font-serif text-xl text-[#1C1917]">Proactive Project</div>
             <div className="flex items-center gap-4 flex-wrap">
+              <a href="/work/spotify/" className="text-xs text-[#01A896] hover:underline tracking-[0.04em]">
+                See also: Spotify Case Study →
+              </a>
               <a href="/work/fibertime/" className="text-xs text-[#01A896] hover:underline tracking-[0.04em]">
-                See also: fibertime Case Study →
+                fibertime Case Study →
               </a>
               <span className="text-xs text-[#B0AAA4] tracking-[0.04em]">
                 Yaga Listing &amp; Drop Flow

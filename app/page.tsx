@@ -277,6 +277,37 @@ export default function Home() {
             </article>
           </Link>
 
+          {/* Spotify proactive project card */}
+          <Link href="/work/spotify/" className="block mb-6">
+            <article className="bg-[#F8F9F7] rounded-2xl overflow-hidden border border-[#E2DDD7] hover:border-[#C8C4BC] hover:shadow-sm transition-all duration-200 group">
+              <div className="h-1 w-full bg-[#1DB954]" />
+              <div className="p-8 md:p-11 flex flex-col md:flex-row md:items-center gap-8">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 flex-wrap mb-5">
+                    <span className="text-[0.7rem] font-bold tracking-[0.12em] uppercase text-[#78716C] bg-[#F0EDE8] border border-[#E2DDD7] rounded-full px-3 py-1">
+                      Proactive Project
+                    </span>
+                    <span className="text-[0.7rem] font-bold tracking-[0.12em] uppercase text-[#78716C]">
+                      UX Design · Mobile
+                    </span>
+                    <span className="text-[0.75rem] text-[#A09A95] font-medium">2025</span>
+                  </div>
+                  <h3 className="font-serif text-[clamp(1.4rem,3vw,2rem)] leading-tight tracking-tight text-[#1C1917] mb-3 group-hover:text-[#3A3733] transition-colors">
+                    Spotify Discovery → Save Flow
+                  </h3>
+                  <p className="text-[0.97rem] leading-relaxed text-[#6B6460] max-w-[500px] mb-4">
+                    When users save a track from Discover Weekly, the app doesn&apos;t
+                    always make it findable again. I redesigned save as intent-based
+                    actions with offline-aware sync.
+                  </p>
+                  <span className="text-[0.8rem] font-semibold text-[#01A896]">
+                    View project →
+                  </span>
+                </div>
+              </div>
+            </article>
+          </Link>
+
           {/* Yaga proactive project card */}
           <Link href="/work/yaga/" className="block mb-6">
             <article className="bg-[#F8F9F7] rounded-2xl overflow-hidden border border-[#E2DDD7] hover:border-[#C8C4BC] hover:shadow-sm transition-all duration-200 group">
