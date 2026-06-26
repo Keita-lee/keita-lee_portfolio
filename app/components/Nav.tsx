@@ -19,116 +19,93 @@ export default function Nav() {
   useEffect(() => { setMenuOpen(false); }, [pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    document.documentElement.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.documentElement.style.overflow = ""; };
   }, [menuOpen]);
 
+  const light = scrolled || menuOpen;
   const close = () => setMenuOpen(false);
 
   return (
     <>
-      {/* Nav bar */}
       <nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-        style={{
-          background: scrolled || menuOpen
-            ? "rgba(250,250,248,0.95)"
-            : "rgba(28,25,23,0.5)",
+        style={light ? {
+          background: "rgba(250,250,248,0.95)",
           backdropFilter: "blur(12px)",
           WebkitBackdropFilter: "blur(12px)",
-          borderBottom: scrolled || menuOpen ? "1px solid #E2DDD7" : "none",
-        }}
+          borderBottom: "1px solid #E2DDD7",
+        } : {}}
       >
-        <div className="w-full px-4 lg:px-16 h-16 flex items-center justify-between"
-          style={{ maxWidth: 1100, marginLeft: "auto", marginRight: "auto" }}>
+        <div className="px-5 lg:px-16 h-16 flex items-center justify-between w-full">
 
           {/* Logo */}
-          <Link
-            href="/"
-            className="font-serif text-lg hover:opacity-80 transition-opacity whitespace-nowrap flex-shrink-0"
-          >
-            <span style={{ color: scrolled || menuOpen ? "#1C1917" : "#ffffff" }}>
-              Keita
-            </span>{" "}
+          <Link href="/" className="font-serif text-lg whitespace-nowrap flex-shrink-0">
+            <span style={{ color: light ? "#1C1917" : "#ffffff" }}>Keita</span>{" "}
             <span style={{ color: "#01A896" }}>Lee</span>
           </Link>
 
           {/* Desktop links */}
           <div className="hidden lg:flex items-center gap-8">
             {isCase ? (
-              <Link
-                href="/#projects"
-                className="text-sm flex items-center gap-2 hover:opacity-80 transition-opacity"
-                style={{ color: scrolled ? "#6B6460" : "#A09A95" }}
-              >
+              <Link href="/#projects" className="text-sm" style={{ color: light ? "#6B6460" : "#A09A95" }}>
                 ← All work
               </Link>
             ) : (
               ["About", "Projects", "Experience", "Contact"].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-sm hover:opacity-80 transition-opacity"
-                  style={{ color: scrolled ? "#6B6460" : "#A09A95" }}
-                >
+                <a key={item} href={`#${item.toLowerCase()}`} className="text-sm" style={{ color: light ? "#6B6460" : "#A09A95" }}>
                   {item}
                 </a>
               ))
             )}
           </div>
 
-          {/* Burger — always white bars, always visible */}
+          {/* Burger button */}
           <button
-            className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-[6px] shrink-0"
+            className="lg:hidden flex-shrink-0"
+            style={{ width: 44, height: 44, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 6, background: "transparent", border: "none", cursor: "pointer", padding: 0 }}
             onClick={() => setMenuOpen((o) => !o)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
-            <span
-              className="block w-[22px] rounded-full transition-all duration-300 origin-center"
-              style={{
-                height: 2,
-                background: scrolled || menuOpen ? "#1C1917" : "#ffffff",
-                transform: menuOpen ? "rotate(45deg) translate(0px, 8px)" : "none",
-              }}
-            />
-            <span
-              className="block w-[22px] rounded-full transition-all duration-300"
-              style={{
-                height: 2,
-                background: scrolled || menuOpen ? "#1C1917" : "#ffffff",
-                opacity: menuOpen ? 0 : 1,
-              }}
-            />
-            <span
-              className="block w-[22px] rounded-full transition-all duration-300 origin-center"
-              style={{
-                height: 2,
-                background: scrolled || menuOpen ? "#1C1917" : "#ffffff",
-                transform: menuOpen ? "rotate(-45deg) translate(0px, -8px)" : "none",
-              }}
-            />
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                style={{
+                  display: "block",
+                  width: 22,
+                  height: 2,
+                  borderRadius: 9999,
+                  background: light ? "#1C1917" : "#ffffff",
+                  transition: "transform 0.3s, opacity 0.3s",
+                  transform: menuOpen
+                    ? i === 0 ? "rotate(45deg) translate(0, 8px)"
+                    : i === 2 ? "rotate(-45deg) translate(0, -8px)"
+                    : "none"
+                    : "none",
+                  opacity: menuOpen && i === 1 ? 0 : 1,
+                }}
+              />
+            ))}
           </button>
         </div>
       </nav>
 
-      {/* Mobile drawer — outside nav so it doesn't affect nav height */}
+      {/* Drawer */}
       <div
-        className="fixed left-0 right-0 z-40 lg:hidden overflow-hidden transition-all duration-300"
+        className="fixed left-0 right-0 z-40 lg:hidden"
         style={{
-          top: "64px",
-          maxHeight: menuOpen ? "280px" : "0px",
+          top: 64,
+          maxHeight: menuOpen ? 300 : 0,
+          overflow: "hidden",
+          transition: "max-height 0.3s ease, opacity 0.3s ease",
           opacity: menuOpen ? 1 : 0,
           background: "#FAFAF8",
           borderBottom: menuOpen ? "1px solid #E2DDD7" : "none",
         }}
       >
-        <div className="px-6 py-4 flex flex-col">
+        <div style={{ padding: "8px 24px 16px" }}>
           {isCase ? (
-            <Link
-              href="/#projects"
-              className="text-sm text-[#6B6460] flex items-center gap-2 py-3"
-              onClick={close}
-            >
+            <Link href="/#projects" className="text-sm text-[#6B6460] flex items-center gap-2 py-3" onClick={close}>
               ← All work
             </Link>
           ) : (
@@ -136,8 +113,15 @@ export default function Nav() {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-sm text-[#6B6460] py-3 border-b border-[#F0EDE8] last:border-0 hover:text-[#1C1917] transition-colors"
                 onClick={close}
+                style={{
+                  display: "block",
+                  padding: "14px 0",
+                  fontSize: 15,
+                  color: "#6B6460",
+                  borderBottom: "1px solid #F0EDE8",
+                  textDecoration: "none",
+                }}
               >
                 {item}
               </a>

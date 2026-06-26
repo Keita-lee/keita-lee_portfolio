@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   title: "Keita Lee — Product, UX & Software",
   description:
     "Portfolio of Keita Lee — product thinking, UX design, and software engineering.",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   openGraph: {
     title: "Keita Lee — Product, UX & Software",
     description:
