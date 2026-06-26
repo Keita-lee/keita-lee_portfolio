@@ -39,7 +39,8 @@ export default function Nav() {
           borderBottom: scrolled || menuOpen ? "1px solid #E2DDD7" : "none",
         }}
       >
-        <div className="max-w-[1100px] mx-auto px-6 md:px-16 h-16 flex items-center justify-between">
+        <div className="w-full px-4 lg:px-16 h-16 flex items-center justify-between"
+          style={{ maxWidth: 1100, marginLeft: "auto", marginRight: "auto" }}>
 
           {/* Logo */}
           <Link
