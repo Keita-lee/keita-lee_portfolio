@@ -24,25 +24,26 @@ export default function Nav() {
       <div className="max-w-[1100px] mx-auto px-8 md:px-16 h-16 flex items-center justify-between">
         <Link
           href="/"
-          className="font-serif text-lg text-[#1C1917] hover:text-[#6B6460] transition-colors"
+          className="font-serif text-lg hover:opacity-80 transition-opacity"
         >
-          KL
+          <span className={`transition-colors ${scrolled ? "text-[#1C1917]" : "text-white"}`}>Keita</span>{" "}
+          <span className="text-[#01A896]">Lee</span>
         </Link>
 
         <div className="flex items-center gap-8">
           {isCase ? (
             <Link
               href="/#projects"
-              className="text-sm text-[#6B6460] hover:text-[#1C1917] transition-colors flex items-center gap-2"
+              className={`text-sm transition-colors flex items-center gap-2 ${scrolled ? "text-[#6B6460] hover:text-[#1C1917]" : "text-[#A09A95] hover:text-white"}`}
             >
               <span>←</span> All work
             </Link>
           ) : (
             <>
-              <a href="#about" className="text-sm text-[#6B6460] hover:text-[#1C1917] transition-colors">About</a>
-              <a href="#projects" className="text-sm text-[#6B6460] hover:text-[#1C1917] transition-colors">Projects</a>
-              <a href="#experience" className="text-sm text-[#6B6460] hover:text-[#1C1917] transition-colors">Experience</a>
-              <a href="#contact" className="text-sm text-[#6B6460] hover:text-[#1C1917] transition-colors">Contact</a>
+              <a href="#about" className={`text-sm transition-colors ${scrolled ? "text-[#6B6460] hover:text-[#1C1917]" : "text-[#A09A95] hover:text-white"}`}>About</a>
+              <a href="#projects" className={`text-sm transition-colors ${scrolled ? "text-[#6B6460] hover:text-[#1C1917]" : "text-[#A09A95] hover:text-white"}`}>Projects</a>
+              <a href="#experience" className={`text-sm transition-colors ${scrolled ? "text-[#6B6460] hover:text-[#1C1917]" : "text-[#A09A95] hover:text-white"}`}>Experience</a>
+              <a href="#contact" className={`text-sm transition-colors ${scrolled ? "text-[#6B6460] hover:text-[#1C1917]" : "text-[#A09A95] hover:text-white"}`}>Contact</a>
             </>
           )}
         </div>

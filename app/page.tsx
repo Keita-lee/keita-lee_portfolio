@@ -1,6 +1,8 @@
 import Nav from "./components/Nav";
 import Link from "next/link";
 import Image from "next/image";
+import ContactSection from "./components/ContactSection";
+import OrbitWidget from "./components/OrbitWidget";
 
 /* ─── data ─────────────────────────────────────────────── */
 
@@ -19,9 +21,10 @@ const projects = [
     role: "Flutter Developer · 2023",
     desc: "Member portal for South Africa's leading medical professional association. Built cross-platform for mobile and desktop with Flutter.",
     techs: ["Flutter", "Dart", "Firebase"],
-    url: "https://members.samedical.org/",
-    urlLabel: "View project",
+    url: null,
+    urlLabel: null,
     image: "/images/sama_1.png",
+    imageFit: "cover" as const,
   },
   {
     color: "#D4542E",
@@ -30,9 +33,10 @@ const projects = [
     role: "Lead Flutter Developer · 2022",
     desc: "Culinary education platform for baking students — structured courses, progress tracking, and professional certifications.",
     techs: ["Flutter", "Dart", "Firebase"],
-    url: "https://www.e-baking.co.za/",
-    urlLabel: "View project",
+    url: null,
+    urlLabel: null,
     image: "/images/ebaking_1.png",
+    imageFit: "cover" as const,
   },
   {
     color: "#009FE3",
@@ -41,9 +45,10 @@ const projects = [
     role: "Flutter Developer · 2023",
     desc: "Local guide to Jeffreys Bay — beaches, surf spots, and events with integrated map functionality.",
     techs: ["Flutter", "Dart", "Google Maps API"],
-    url: "https://github.com/keitawillmott/my-jbay",
-    urlLabel: "View on GitHub",
+    url: null,
+    urlLabel: null,
     image: "/images/my_jbay.png",
+    imageFit: "cover" as const,
   },
   {
     color: "#2B2B2B",
@@ -52,9 +57,10 @@ const projects = [
     role: "Full-Stack Developer · 2023",
     desc: "Order management system for field sales teams — place, track, and manage orders. Solo full-stack build.",
     techs: ["Flutter", "Dart", "Firebase"],
-    url: "https://github.com/keitawillmott",
-    urlLabel: "View on GitHub",
+    url: null,
+    urlLabel: null,
     image: "/images/postzone_card.png",
+    imageFit: "cover" as const,
   },
   {
     color: "#4ECDC4",
@@ -63,27 +69,30 @@ const projects = [
     role: "Illustrator · 2023",
     desc: "Surfing character illustrations — Surfer Gal & Surfer Dude — created for Jones & Co. capturing the surfing lifestyle.",
     techs: ["Illustration", "Digital Art", "Character Design"],
-    url: null,
-    urlLabel: null,
+    url: "/work/illustration/",
+    urlLabel: "View characters",
     image: "/images/surfer_dude_no_background.png",
+    imageFit: "contain" as const,
   },
 ];
 
 const experience = [
   {
     period: "Sep 2025 – Present",
-    title: "Junior Software Developer — QA, UX & Delivery Support",
+    title: "Junior Software Developer | QA, UX & Delivery Support",
     company: "Otomatika",
     meta: ["South Africa (Remote)", "Full-time · 10 mos"],
     bullets: [
       "Design user flows, automation processes, and system planning documentation using Figma and FigJam",
+      "Collaborate with development and operations teams to improve workflows and user experience",
       "Manage and improve the release process for WhatsApp bot and automation system updates",
-      "Implement structured testing procedures, release protocols, QA checklists, and documentation standards",
+      "Implement structured testing procedures, release protocols, QA checklists, documentation standards, and client communication processes",
       "Handle onboarding, release support, task and ticket management, and deployment coordination",
-      "Contribute to regression and unit testing; troubleshoot database-related issues",
+      "Contribute to regression and unit testing development",
+      "Troubleshoot database-related issues and support automation and backend systems",
       "Work with GitHub, Bitbucket, Django, Twilio, CodeCapsules, Vercel, and Python",
     ],
-    skills: ["Quality Assurance", "UX Design", "Python", "Django", "Figma", "GitHub", "Bitbucket", "Project Management", "Twilio"],
+    skills: ["Quality Assurance", "User Experience (UX)", "Python", "Django", "Figma", "GitHub", "Bitbucket", "Project Management", "Documentation", "Twilio"],
   },
   {
     period: "Jul 2025 – Aug 2025",
@@ -92,44 +101,76 @@ const experience = [
     meta: ["South Africa (Hybrid)", "Contract · 2 mos"],
     bullets: [
       "Designed and implemented bot automation solutions to streamline processes",
-      "Developed efficient, reliable, and scalable bot systems for client projects",
+      "Developed efficient, reliable, and scalable bot systems",
+      "Leveraged software development expertise to drive operational excellence",
+      "Focused on Development Bot Automation for client projects",
     ],
-    skills: ["Back-End Development", "Bot Automation", "Database Management"],
+    skills: ["Back-End Development", "Database Management System (DBMS)", "Bot Automation"],
   },
   {
     period: "Oct 2024 – Jul 2025",
     title: "Flutter Software Developer",
     company: "Barefoot Bytes",
-    meta: ["Jeffreys Bay, Eastern Cape (Remote)", "Full-time · 10 mos"],
+    meta: ["Jeffreys Bay, Eastern Cape, South Africa (Remote)", "Full-time · 10 mos"],
     bullets: [
-      "Developed and managed a wide range of apps and websites across front-end and back-end",
-      "Managed databases, ensured data integrity, and provided system support",
-      "Led projects, communicated with clients, and managed multiple concurrent deadlines",
-      "Identified and resolved bugs; supported and mentored other developers",
+      "Developed and managed a wide range of apps and websites",
+      "Worked on both front-end and back-end development",
+      "Managed databases and ensured data integrity",
+      "Provided system support and troubleshooting",
+      "Identified and resolved bugs for high-quality code",
+      "Communicated with clients and presented project updates",
+      "Managed multiple projects and met deadlines",
+      "Led projects and ensured successful delivery",
     ],
-    skills: ["Flutter", "Front-End Development", "Back-End Development", "Project Management", "Database Management"],
+    skills: ["Project Management", "Software Development", "Front-End Development", "Flutter", "Communication", "Back-End Development", "Database Management System (DBMS)"],
   },
   {
     period: "Aug 2024 – Sep 2024",
     title: "Intern Developer",
     company: "Barefoot Bytes",
-    meta: ["Jeffreys Bay, Eastern Cape (Remote)", "Part-time · 2 mos"],
+    meta: ["Jeffreys Bay, Eastern Cape, South Africa (Remote)", "Part-time · 2 mos"],
     bullets: [
-      "Contributed to mobile apps, desktop applications, and websites using Flutter and Dart",
-      "Troubleshot UI issues, ensured responsive designs, and presented work to clients",
+      "Contributed to the development of mobile apps, desktop applications, and websites",
+      "Used Flutter and Dart for front-end development",
+      "Troubleshot UI issues and ensured responsive designs",
+      "Collaborated with team members on real-world projects",
+      "Solved problems and implemented solutions efficiently",
+      "Presented projects to clients and received direct feedback",
+      "Wrote clean, responsive, and scalable code",
     ],
-    skills: ["Flutter", "Front-End Development", "Team Collaboration"],
+    skills: ["Software Development", "Front-End Development", "Team Collaboration"],
   },
   {
     period: "Jan 2024 – Aug 2024",
-    title: "Assistant Manager",
+    title: "Assistant Manager at Guest House",
     company: "Surf Lodge South Africa",
-    meta: ["Jeffreys Bay, Eastern Cape (On-site)", "Part-time · 8 mos"],
+    meta: ["Jeffreys Bay, Eastern Cape, South Africa (On-site)", "Part-time · 8 mos"],
     bullets: [
-      "Managed check-in/check-out, guest activities, and administrative tasks including bookings and payments",
-      "Supervised cleaners and garden staff; arranged transport for guests",
+      "Managed check-in and check-out processes for guests",
+      "Organized and facilitated guest activities",
+      "Served as primary host and performed maintenance tasks",
+      "Prepared breakfast for guests on selected mornings",
+      "Supervised cleaners and garden staff",
+      "Arranged transport services for guests as needed",
+      "Handled administrative tasks including bookings and payments",
     ],
-    skills: ["Administration", "Leadership", "Team Management"],
+    skills: ["Administration", "Leadership Development", "Team Management"],
+  },
+  {
+    period: "Jan 2023 – Dec 2023",
+    title: "Student",
+    company: "Altitude Ministry Team",
+    meta: ["South Africa (On-site)", "Apprenticeship · 1 yr"],
+    bullets: [
+      "Completed intensive discipleship training",
+      "Explored and enhanced personal giftings and skills for ministry",
+      "Completed a comprehensive leadership curriculum",
+      "Engaged in intentional discipleship for spiritual development",
+      "Delved into theological studies for practical application",
+      "Participated in Oxygen Life Church's community life",
+      "Undertook a ministry trip to Malawi and Zambia",
+    ],
+    skills: ["Leadership", "Teamwork", "Event Planning", "Event Setup"],
   },
   {
     period: "Oct 2022 – Oct 2023",
@@ -137,10 +178,29 @@ const experience = [
     company: "Hi5 Technologies",
     meta: ["South Africa (Remote)", "Full-time · 1 yr 1 mo"],
     bullets: [
-      "Provided customer support via chat and email, addressing inquiries and resolving issues promptly",
-      "Collaborated with cross-functional teams to resolve complex technical concerns",
+      "Provided exceptional online customer support via chat and email",
+      "Addressed inquiries and resolved issues promptly",
+      "Identified and resolved customer concerns collaboratively",
+      "Stayed updated on product offerings and industry trends",
+      "Shared insights and best practices to enhance customer satisfaction",
+      "Collaborated with cross-functional teams for issue resolution",
     ],
-    skills: ["Technical Support", "Troubleshooting", "Customer Support"],
+    skills: ["Technical Support", "Email", "Troubleshooting", "Customer Support"],
+  },
+  {
+    period: "Oct 2021 – Dec 2021",
+    title: "Intern",
+    company: "Nobel Learning PBC",
+    meta: ["Remote", "Internship · 3 mos"],
+    bullets: [
+      "Refined leadership skills by guiding team projects and facilitating discussions",
+      "Developed and delivered compelling pitches and presentations",
+      "Collaborated on comprehensive presentations for diverse stakeholders",
+      "Navigated and resolved conflicts within the team",
+      "Managed multiple responsibilities and deadlines effectively",
+      "Took on leadership and facilitation roles in team projects",
+    ],
+    skills: ["Presentation Skills", "Project Management", "Leadership", "Teamwork"],
   },
 ];
 
@@ -152,7 +212,7 @@ export default function Home() {
       <Nav />
 
       {/* ── HERO ──────────────────────────────────────── */}
-      <section className="bg-[#1C1917] min-h-svh flex flex-col justify-end px-8 md:px-16 py-16 relative overflow-hidden">
+      <section className="bg-[#1C1917] min-h-svh flex flex-col justify-center items-center px-8 md:px-16 py-16 relative overflow-hidden">
         <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.035 }}
           preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -163,23 +223,24 @@ export default function Home() {
           <rect width="100%" height="100%" fill="url(#pg)" />
         </svg>
 
-        <div className="max-w-[1100px] relative animate-fade-up">
+        <div className="max-w-[1100px] w-full relative animate-fade-up text-center">
           <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.16em] uppercase text-[#01A896] border border-[#01A896] rounded-full px-4 py-1.5 mb-10">
             <span className="w-1.5 h-1.5 rounded-full bg-[#01A896] shrink-0" />
             Product · UX · Software
           </div>
 
-          <h1 className="font-serif text-[clamp(48px,7vw,96px)] leading-[0.95] font-normal text-[#F0EDE8] mb-7 tracking-tight text-balance">
-            Keita Lee<br />
-            <em className="text-[#01A896]">Willmott</em>
+          <h1 className="font-serif text-[clamp(48px,7vw,96px)] leading-[1.0] mb-7 tracking-tight text-balance">
+            <span className="text-white">Keita</span>{" "}
+            <span className="text-[#01A896]">Lee</span><br />
+            <span className="text-white">Willmott</span>
           </h1>
 
-          <p className="text-lg leading-relaxed text-[#6B6460] max-w-[560px] mb-12 font-light">
+          <p className="text-lg leading-relaxed text-[#6B6460] max-w-[560px] mx-auto mb-12 font-light">
             I make complex products feel simple — designing flows, improving data
             capture, and shipping work that holds up in the real world.
           </p>
 
-          <div className="flex items-center gap-4 flex-wrap mb-16">
+          <div className="flex items-center justify-center gap-4 flex-wrap">
             <a href="#contact"
               className="px-6 py-3 bg-[#01A896] text-white text-sm font-semibold rounded-md hover:bg-[#019283] transition-colors">
               Get in touch
@@ -189,48 +250,45 @@ export default function Home() {
               View projects
             </a>
           </div>
-
-          <div className="flex gap-10 flex-wrap pt-10 border-t border-[#2E2B28]">
-            {[
-              { num: "800–1k",     label: "daily user journeys\nthrough redesigned WhatsApp flows" },
-              { num: "6+",         label: "products shipped\nfrom concept to release" },
-              { num: "Full-cycle", label: "design, QA & delivery\nacross mobile & automation" },
-            ].map((s) => (
-              <div key={s.label}>
-                <div className="font-serif text-[2.2rem] leading-none text-[#C07B3A]">{s.num}</div>
-                <div className="text-xs text-[#5A5652] mt-1 leading-relaxed whitespace-pre-line">{s.label}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
       {/* ── ABOUT ─────────────────────────────────────── */}
       <section id="about" className="px-8 md:px-16 py-24 bg-[#FAFAF8] border-t border-[#E2DDD7]">
-        <div className="max-w-[860px] mx-auto">
-          <Eyebrow>About</Eyebrow>
-          <h2 className="font-serif text-[clamp(1.9rem,4.5vw,2.8rem)] leading-tight tracking-tight text-[#1C1917] mb-2">
-            Full-cycle builder<br />across design &amp; code
-          </h2>
-          <p className="text-[1.07rem] leading-[1.8] text-[#1C1917] max-w-[660px] mt-6 mb-9">
-            Product, UX, and software professional at Otomatika, where I build
-            WhatsApp automation systems and digital products for fibertime™. I
-            work across the full delivery cycle — designing user flows, planning
-            automation, supporting QA, and collaborating with developers.
-            Passionate about building user-focused digital products that balance
-            usability with operational efficiency, and growing my expertise in
-            Product Management, UX Design, and Software Development.
-          </p>
-          <p className="text-xs font-semibold tracking-[0.1em] uppercase text-[#A09A95] mb-3">
-            Skills &amp; tools
-          </p>
-          <ul className="flex flex-wrap gap-2 p-0 list-none">
-            {skills.map((s) => (
-              <li key={s} className="text-[0.82rem] font-medium text-[#4A5E5C] bg-white border border-[#E2DDD7] rounded-full px-4 py-1.5">
-                {s}
-              </li>
-            ))}
-          </ul>
+        <div className="max-w-[1100px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-20 items-center">
+
+          {/* Left — text */}
+          <div className="flex-1 min-w-0">
+            <Eyebrow>About</Eyebrow>
+            <h2 className="font-serif text-[clamp(1.9rem,4.5vw,2.8rem)] leading-tight tracking-tight text-[#1C1917] mb-2">
+              Full-cycle builder<br />across design &amp; code
+            </h2>
+            <p className="text-[1.07rem] leading-[1.8] text-[#1C1917] mt-6 mb-9">
+              Product, UX, and software professional at Otomatika, where I build
+              WhatsApp automation systems and digital products for fibertime™. I
+              work across the full delivery cycle — designing user flows, planning
+              automation, supporting QA, and collaborating with developers.
+              Passionate about building user-focused digital products that balance
+              usability with operational efficiency, and growing my expertise in
+              Product Management, UX Design, and Software Development.
+            </p>
+            <p className="text-xs font-semibold tracking-[0.1em] uppercase text-[#A09A95] mb-3">
+              Skills &amp; tools
+            </p>
+            <ul className="flex flex-wrap gap-2 p-0 list-none">
+              {skills.map((s) => (
+                <li key={s} className="text-[0.82rem] font-medium text-[#4A5E5C] bg-white border border-[#E2DDD7] rounded-full px-4 py-1.5">
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Right — orbit widget */}
+          <div className="shrink-0 flex items-center justify-center">
+            <OrbitWidget />
+          </div>
+
         </div>
       </section>
 
@@ -254,7 +312,7 @@ export default function Home() {
                 <div className="flex-1">
                   <div className="flex items-center gap-3 flex-wrap mb-5">
                     <span className="text-[0.7rem] font-bold tracking-[0.12em] uppercase text-[#78716C] bg-[#F0EDE8] border border-[#E2DDD7] rounded-full px-3 py-1">
-                      Featured Case Study
+                      Featured Project
                     </span>
                     <span className="text-[0.7rem] font-bold tracking-[0.12em] uppercase text-[#78716C]">
                       UX &amp; QA · WhatsApp
@@ -270,7 +328,7 @@ export default function Home() {
                     system, and shipped structured data-capture forms.
                   </p>
                   <span className="text-[0.8rem] font-semibold text-[#01A896]">
-                    View case study →
+                    View project →
                   </span>
                 </div>
               </div>
@@ -290,7 +348,7 @@ export default function Home() {
                     <span className="text-[0.7rem] font-bold tracking-[0.12em] uppercase text-[#78716C]">
                       UX Design · Mobile
                     </span>
-                    <span className="text-[0.75rem] text-[#A09A95] font-medium">2025</span>
+                    <span className="text-[0.75rem] text-[#A09A95] font-medium">2026</span>
                   </div>
                   <h3 className="font-serif text-[clamp(1.4rem,3vw,2rem)] leading-tight tracking-tight text-[#1C1917] mb-3 group-hover:text-[#3A3733] transition-colors">
                     Spotify Discovery → Save Flow
@@ -321,7 +379,7 @@ export default function Home() {
                     <span className="text-[0.7rem] font-bold tracking-[0.12em] uppercase text-[#78716C]">
                       UX Design · Mobile
                     </span>
-                    <span className="text-[0.75rem] text-[#A09A95] font-medium">2024</span>
+                    <span className="text-[0.75rem] text-[#A09A95] font-medium">2026</span>
                   </div>
                   <h3 className="font-serif text-[clamp(1.4rem,3vw,2rem)] leading-tight tracking-tight text-[#1C1917] mb-3 group-hover:text-[#3A3733] transition-colors">
                     Yaga Listing &amp; Drop Flow
@@ -340,31 +398,43 @@ export default function Home() {
 
           {/* Project grid */}
           <div className="grid gap-5" style={{ gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))" }}>
-            {projects.map((p) => (
-              <article key={p.title} className="bg-[#F8F9F7] rounded-xl border border-[#E2DDD7] overflow-hidden flex flex-col hover:border-[rgba(1,168,150,0.3)] hover:shadow-md transition-all duration-150">
-                <div className="h-[3px] w-full" style={{ background: p.color }} />
-                <div className="relative h-36 bg-[#F0EDE8] overflow-hidden">
-                  <Image src={p.image} alt={p.title} fill className="object-cover opacity-80" />
-                </div>
-                <div className="p-5 flex flex-col flex-1">
-                  <p className="text-[0.68rem] font-bold tracking-[0.14em] uppercase text-[#01A896] mb-2">{p.type}</p>
-                  <h3 className="font-serif text-[1.18rem] leading-tight text-[#1C1917] mb-2.5">{p.title}</h3>
-                  <p className="text-[0.78rem] text-[#A09A95] mb-3">{p.role}</p>
-                  <p className="text-[0.85rem] text-[#6B6460] leading-relaxed flex-1 mb-4">{p.desc}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {p.techs.map((t) => (
-                      <span key={t} className="text-[0.75rem] font-semibold text-[#6B6460] border border-[#E2DDD7] rounded-md px-2 py-0.5">{t}</span>
-                    ))}
+            {projects.map((p) => {
+              const isIllustration = p.imageFit === "contain";
+              const card = (
+                <article key={p.title} className="bg-[#F8F9F7] rounded-xl border border-[#E2DDD7] overflow-hidden flex flex-col hover:border-[rgba(1,168,150,0.3)] hover:shadow-md transition-all duration-150 h-full">
+                  <div className="h-[3px] w-full shrink-0" style={{ background: p.color }} />
+                  <div className={`relative overflow-hidden shrink-0 ${isIllustration ? "h-48 bg-[#EEF9F8]" : "h-44 bg-[#F0EDE8]"}`}>
+                    <Image
+                      src={p.image}
+                      alt={p.title}
+                      fill
+                      className={isIllustration ? "object-contain p-4" : "object-cover object-top"}
+                    />
                   </div>
-                  {p.url && (
-                    <a href={p.url} target="_blank" rel="noopener noreferrer"
-                      className="text-[0.8rem] font-semibold text-[#01A896] hover:underline">
-                      {p.urlLabel} →
-                    </a>
-                  )}
-                </div>
-              </article>
-            ))}
+                  <div className="p-5 flex flex-col flex-1">
+                    <p className="text-[0.68rem] font-bold tracking-[0.14em] uppercase text-[#01A896] mb-2">{p.type}</p>
+                    <h3 className="font-serif text-[1.18rem] leading-tight text-[#1C1917] mb-2.5">{p.title}</h3>
+                    <p className="text-[0.78rem] text-[#A09A95] mb-3">{p.role}</p>
+                    <p className="text-[0.85rem] text-[#6B6460] leading-relaxed flex-1 mb-4">{p.desc}</p>
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {p.techs.map((t) => (
+                        <span key={t} className="text-[0.75rem] font-semibold text-[#6B6460] border border-[#E2DDD7] rounded-md px-2 py-0.5">{t}</span>
+                      ))}
+                    </div>
+                    {p.url && (
+                      <span className="text-[0.8rem] font-semibold text-[#01A896]">
+                        {p.urlLabel} →
+                      </span>
+                    )}
+                  </div>
+                </article>
+              );
+              return p.url ? (
+                <Link key={p.title} href={p.url} className="flex flex-col">{card}</Link>
+              ) : (
+                <div key={p.title} className="flex flex-col">{card}</div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -419,54 +489,7 @@ export default function Home() {
       </section>
 
       {/* ── CONTACT ───────────────────────────────────── */}
-      <section id="contact" className="px-8 md:px-16 py-24 bg-[#1C1917] border-t border-[#2E2B28]">
-        <div className="max-w-[860px] mx-auto">
-          <Eyebrow bright>Contact</Eyebrow>
-          <h2 className="font-serif text-[clamp(1.9rem,4.5vw,2.8rem)] leading-tight tracking-tight text-[#F0EDE8] mb-2">
-            Let&apos;s work together
-          </h2>
-          <p className="text-base text-[#6B6460] max-w-[500px] mb-12 leading-relaxed">
-            Open to new opportunities and challenges. If you have a project or
-            position that might be a good fit, reach out through any of the
-            channels below.
-          </p>
-
-          <div className="grid gap-5 mb-9" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))" }}>
-            {[
-              { icon: "📍", label: "Location", value: "Port Elizabeth, Eastern Cape, South Africa", href: null },
-              { icon: "✉", label: "Email", value: "keitawillmott@gmail.com", href: "mailto:keitawillmott@gmail.com" },
-              { icon: "📞", label: "Phone", value: "+27 61 843 4816", href: "tel:+27618434816" },
-            ].map((c) => (
-              <div key={c.label} className="flex items-start gap-4 p-5 bg-[#252220] rounded-xl border border-[#2E2B28]">
-                <div className="w-10 h-10 rounded-md bg-[rgba(1,168,150,0.08)] flex items-center justify-center shrink-0 text-lg">{c.icon}</div>
-                <div>
-                  <p className="text-[0.72rem] font-semibold tracking-[0.1em] uppercase text-[#5A5652] mb-1">{c.label}</p>
-                  {c.href ? (
-                    <a href={c.href} className="text-[0.92rem] font-medium text-[#01A896] hover:underline">{c.value}</a>
-                  ) : (
-                    <p className="text-[0.92rem] font-medium text-[#A09A95]">{c.value}</p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-col gap-3 max-w-sm">
-            <a href="mailto:keitawillmott@gmail.com"
-              className="flex items-center justify-center gap-3.5 py-4 px-5 bg-[#01A896] text-white rounded-xl text-[0.92rem] font-semibold hover:bg-[#019283] transition-colors">
-              ✉ &nbsp; Email me directly
-            </a>
-            <a href="https://www.linkedin.com/in/keita-willmott-a271062a5/" target="_blank" rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3.5 py-4 px-5 bg-[#252220] text-[#A09A95] border border-[#3A3733] rounded-xl text-[0.92rem] font-semibold hover:bg-[#2E2B28] transition-colors">
-              in &nbsp; Connect on LinkedIn
-            </a>
-            <a href="https://wa.me/27618434816" target="_blank" rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3.5 py-4 px-5 bg-[#252220] text-[#A09A95] border border-[#3A3733] rounded-xl text-[0.92rem] font-semibold hover:bg-[#2E2B28] transition-colors">
-              💬 &nbsp; Message on WhatsApp
-            </a>
-          </div>
-        </div>
-      </section>
+      <ContactSection />
 
       {/* ── FOOTER ────────────────────────────────────── */}
       <footer className="border-t border-[#2E2B28] bg-[#1C1917] py-8 text-center text-[0.8rem] text-[#5A5652]">

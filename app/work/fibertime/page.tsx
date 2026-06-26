@@ -1,6 +1,7 @@
 import Nav from "../../components/Nav";
 import FormDemo from "./FormDemo";
 import ProgressBarClient from "../yaga/ProgressBar";
+import NextImage from "next/image";
 
 export const metadata = {
   title: "fibertime™ WhatsApp Chatbot — Keita Lee",
@@ -14,6 +15,18 @@ export default function FibertimeCaseStudy() {
       <Nav />
 
       <ScrollProgress />
+
+      {/* ── FIBERTIME LINK ───────────────────────────── */}
+      <div className="bg-[#141210] border-b border-[#2E2B28] px-8 md:px-16 py-3 flex justify-end mt-16">
+        <a
+          href="https://fibertime.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm font-semibold text-[#01A896] hover:underline"
+        >
+          Visit fibertime.com →
+        </a>
+      </div>
 
       {/* ── HERO ─────────────────────────────────────── */}
       <section className="bg-[#1C1917] min-h-svh flex flex-col justify-end px-8 md:px-16 py-[72px] relative overflow-hidden">
@@ -125,18 +138,39 @@ export default function FibertimeCaseStudy() {
               </div>
             </div>
 
-            <div className="w-[320px] sticky top-10">
-              <div className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#78716C] mb-3 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#A09A95] inline-block" />
-                Before state
+            <div className="w-[320px] sticky top-10 flex flex-col gap-6">
+              <div>
+                <div className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#78716C] mb-3 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#01A896] inline-block" />
+                  Chatflow designs
+                </div>
+                <NextImage
+                  src="/images/fibertime_wireframes.png"
+                  alt="fibertime WhatsApp chatflow wireframes"
+                  width={320}
+                  height={400}
+                  className="rounded-xl border border-[#E2DDD7] w-full h-auto object-cover"
+                />
+                <p className="text-xs text-[#A09A95] text-center mt-3 italic">
+                  Chatflow wireframes designed for the new WhatsApp activation bot
+                </p>
               </div>
-              <ImagePlaceholder
-                label="WhatsApp chat — unstructured data capture"
-                aspect="4/5"
-              />
-              <p className="text-xs text-[#A09A95] text-center mt-3 italic">
-                Screenshot placeholder — flow wireframe coming soon
-              </p>
+              <div>
+                <div className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#78716C] mb-3 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#01A896] inline-block" />
+                  Final output
+                </div>
+                <NextImage
+                  src="/images/fibertime_chatbot.png"
+                  alt="fibertime chatbot final result"
+                  width={320}
+                  height={400}
+                  className="rounded-xl border border-[#E2DDD7] w-full h-auto object-cover"
+                />
+                <p className="text-xs text-[#A09A95] text-center mt-3 italic">
+                  Actual output — the live WhatsApp bot built from these designs
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -210,10 +244,22 @@ export default function FibertimeCaseStudy() {
             <ActivationFlowDiagram />
           </div>
 
-          <ImagePlaceholder
-            label="Data capture flow — diagram screenshot"
-            aspect="16/9"
-          />
+          <div className="mt-8">
+            <div className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#78716C] mb-3 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#01A896] inline-block" />
+              Data capture chatflow
+            </div>
+            <NextImage
+              src="/images/data_capture_flow.png"
+              alt="fibertime data capture WhatsApp chatflow"
+              width={1200}
+              height={675}
+              className="rounded-xl border border-[#E2DDD7] w-full h-auto"
+            />
+            <p className="text-xs text-[#A09A95] mt-3 italic">
+              A separate WhatsApp bot data capture chatflow designed for fibertime — used by field agents to capture data on houses across South Africa.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -224,16 +270,11 @@ export default function FibertimeCaseStudy() {
 
           <div className="max-w-[680px] mb-12">
             <h2 className="font-serif text-[clamp(28px,4vw,50px)] leading-tight font-normal text-[#F0EDE8] mb-6 text-balance">
-              System integration<br />&amp; release discipline
+              Release discipline
             </h2>
             <p className="text-[17px] leading-relaxed text-[#6B6460] font-light">
-              The bot sits between field agents and back-office systems. Every
-              release follows a structured QA protocol before going live.
+              Every release follows a structured QA protocol before going live.
             </p>
-          </div>
-
-          <div className="bg-[#141210] rounded-2xl p-10 border border-[#2E2B28] overflow-x-auto mb-12">
-            <IntegrationDiagram />
           </div>
 
           <div className="bg-[#141210] rounded-2xl p-10 border border-[#2E2B28]">
@@ -316,15 +357,6 @@ export default function FibertimeCaseStudy() {
             ))}
           </div>
 
-          <a
-            href="https://fibertime.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-semibold text-[#01A896] hover:underline"
-          >
-            Visit fibertime.com →
-          </a>
-
           <div className="flex justify-between items-center pt-10 mt-10 border-t border-[#E2DDD7] flex-wrap gap-4">
             <div className="font-serif text-xl text-[#1C1917]">Featured Case Study</div>
             <div className="flex items-center gap-4 flex-wrap">
@@ -343,30 +375,6 @@ export default function FibertimeCaseStudy() {
 }
 
 /* ── Shared pieces ──────────────────────────────────── */
-
-function ImagePlaceholder({
-  label,
-  aspect = "16/9",
-}: {
-  label: string;
-  aspect?: string;
-}) {
-  return (
-    <div
-      className="w-full rounded-xl border border-dashed border-[#C8C4BC] bg-[#F0EDE8] flex flex-col items-center justify-center gap-3"
-      style={{ aspectRatio: aspect }}
-    >
-      <div className="w-10 h-10 rounded-lg bg-[#E2DDD7] flex items-center justify-center">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A09A95" strokeWidth="1.5">
-          <rect x="3" y="3" width="18" height="18" rx="2" />
-          <circle cx="8.5" cy="8.5" r="1.5" />
-          <path d="M21 15l-5-5L5 21" />
-        </svg>
-      </div>
-      <span className="text-xs text-[#A09A95] text-center px-4">{label}</span>
-    </div>
-  );
-}
 
 function SectionLabel({
   num,
@@ -452,43 +460,3 @@ function ActivationFlowDiagram() {
   );
 }
 
-function IntegrationDiagram() {
-  return (
-    <svg
-      viewBox="0 0 820 280"
-      style={{ width: "100%", minWidth: 620, fontFamily: "var(--font-dm-sans)" }}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        <marker id="arr-int" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-          <polygon points="0 0, 8 3, 0 6" fill="#4A4745" />
-        </marker>
-      </defs>
-      {[
-        { x: 10, title: "FIELD AGENT", rows: ["WhatsApp (Android)", "Live location share", "Form submission", "Router photo"] },
-        { x: 220, title: "BOT LAYER", rows: ["WhatsApp Business API", "Twilio messaging", "Django backend", "Flow orchestration"] },
-        { x: 430, title: "INTEGRATIONS", rows: ["FTM API (home assign)", "Location / map service", "AI OCR (device IDs)", "UAT environment"] },
-        { x: 640, title: "BACK-OFFICE", rows: ["Activation records", "Customer database", "Agent routing", "Reporting"] },
-      ].map((col) => (
-        <g key={col.title}>
-          <rect x={col.x} y="10" width="170" height="260" rx="10" fill="#1C1917" stroke="#2E2B28" strokeWidth="1.5" />
-          <text x={col.x + 85} y="36" textAnchor="middle" fill="#6B6460" fontSize="10" fontWeight="700" letterSpacing="1.5">
-            {col.title}
-          </text>
-          <line x1={col.x + 15} y1="46" x2={col.x + 155} y2="46" stroke="#2E2B28" strokeWidth="1" />
-          {col.rows.map((row, i) => (
-            <g key={row}>
-              <rect x={col.x + 12} y={58 + i * 52} width="146" height="40" rx="4" fill="#141210" />
-              <text x={col.x + 85} y={58 + i * 52 + 25} textAnchor="middle" fill="#5A5652" fontSize="10.5">
-                {row}
-              </text>
-            </g>
-          ))}
-        </g>
-      ))}
-      <line x1="184" y1="140" x2="214" y2="140" stroke="#3A3733" strokeWidth="1.5" markerEnd="url(#arr-int)" />
-      <line x1="394" y1="140" x2="424" y2="140" stroke="#3A3733" strokeWidth="1.5" markerEnd="url(#arr-int)" />
-      <line x1="604" y1="140" x2="634" y2="140" stroke="#3A3733" strokeWidth="1.5" markerEnd="url(#arr-int)" />
-    </svg>
-  );
-}
