@@ -23,132 +23,127 @@ export default function Nav() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  const light = scrolled || menuOpen;
   const close = () => setMenuOpen(false);
 
-  // Burger bar colour depends on nav state
-  const barBg = light ? "#1C1917" : "#ffffff";
-
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-      style={light ? {
-        background: "rgba(250,250,248,0.95)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        borderBottom: "1px solid #E2DDD7",
-      } : undefined}
-    >
-      <div className="max-w-[1100px] mx-auto px-6 md:px-16 h-16 flex items-center justify-between">
+    <>
+      {/* Nav bar */}
+      <nav
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        style={{
+          background: scrolled || menuOpen
+            ? "rgba(250,250,248,0.95)"
+            : "rgba(28,25,23,0.5)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          borderBottom: scrolled || menuOpen ? "1px solid #E2DDD7" : "none",
+        }}
+      >
+        <div className="max-w-[1100px] mx-auto px-6 md:px-16 h-16 flex items-center justify-between">
 
-        {/* Logo */}
-        <Link
-          href="/"
-          className="font-serif text-lg hover:opacity-80 transition-opacity whitespace-nowrap flex-shrink-0"
-        >
-          <span
-            className="transition-colors"
-            style={{ color: light ? "#1C1917" : "#ffffff" }}
-          >Keita</span>{" "}
-          <span style={{ color: "#01A896" }}>Lee</span>
-        </Link>
+          {/* Logo */}
+          <Link
+            href="/"
+            className="font-serif text-lg hover:opacity-80 transition-opacity whitespace-nowrap flex-shrink-0"
+          >
+            <span style={{ color: scrolled || menuOpen ? "#1C1917" : "#ffffff" }}>
+              Keita
+            </span>{" "}
+            <span style={{ color: "#01A896" }}>Lee</span>
+          </Link>
 
-        {/* Desktop nav links */}
-        <div className="hidden md:flex items-center gap-8">
-          {isCase ? (
-            <Link
-              href="/#projects"
-              className="text-sm flex items-center gap-2 transition-colors"
-              style={{ color: light ? "#6B6460" : "#A09A95" }}
-            >
-              <span>←</span> All work
-            </Link>
-          ) : (
-            <>
-              {["About", "Projects", "Experience", "Contact"].map((item) => (
+          {/* Desktop links */}
+          <div className="hidden lg:flex items-center gap-8">
+            {isCase ? (
+              <Link
+                href="/#projects"
+                className="text-sm flex items-center gap-2 hover:opacity-80 transition-opacity"
+                style={{ color: scrolled ? "#6B6460" : "#A09A95" }}
+              >
+                ← All work
+              </Link>
+            ) : (
+              ["About", "Projects", "Experience", "Contact"].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-sm transition-colors hover:opacity-80"
-                  style={{ color: light ? "#6B6460" : "#A09A95" }}
+                  className="text-sm hover:opacity-80 transition-opacity"
+                  style={{ color: scrolled ? "#6B6460" : "#A09A95" }}
                 >
                   {item}
                 </a>
-              ))}
-            </>
-          )}
+              ))
+            )}
+          </div>
+
+          {/* Burger — always white bars, always visible */}
+          <button
+            className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-[6px] shrink-0"
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+          >
+            <span
+              className="block w-[22px] rounded-full transition-all duration-300 origin-center"
+              style={{
+                height: 2,
+                background: scrolled || menuOpen ? "#1C1917" : "#ffffff",
+                transform: menuOpen ? "rotate(45deg) translate(0px, 8px)" : "none",
+              }}
+            />
+            <span
+              className="block w-[22px] rounded-full transition-all duration-300"
+              style={{
+                height: 2,
+                background: scrolled || menuOpen ? "#1C1917" : "#ffffff",
+                opacity: menuOpen ? 0 : 1,
+              }}
+            />
+            <span
+              className="block w-[22px] rounded-full transition-all duration-300 origin-center"
+              style={{
+                height: 2,
+                background: scrolled || menuOpen ? "#1C1917" : "#ffffff",
+                transform: menuOpen ? "rotate(-45deg) translate(0px, -8px)" : "none",
+              }}
+            />
+          </button>
         </div>
+      </nav>
 
-        {/* Burger button — always visible on mobile via inline background pill */}
-        <button
-          className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px] shrink-0 rounded-lg"
-          style={!light ? { background: "rgba(0,0,0,0.4)" } : undefined}
-          onClick={() => setMenuOpen((o) => !o)}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-        >
-          <span
-            className="block w-5 rounded-full transition-all duration-300 origin-center"
-            style={{
-              height: 2,
-              background: barBg,
-              transform: menuOpen ? "rotate(45deg) translateY(7px)" : "none",
-            }}
-          />
-          <span
-            className="block w-5 rounded-full transition-all duration-300"
-            style={{
-              height: 2,
-              background: barBg,
-              opacity: menuOpen ? 0 : 1,
-            }}
-          />
-          <span
-            className="block w-5 rounded-full transition-all duration-300 origin-center"
-            style={{
-              height: 2,
-              background: barBg,
-              transform: menuOpen ? "rotate(-45deg) translateY(-7px)" : "none",
-            }}
-          />
-        </button>
-      </div>
-
-      {/* Mobile slide-down drawer */}
+      {/* Mobile drawer — outside nav so it doesn't affect nav height */}
       <div
-        className="md:hidden overflow-hidden transition-all duration-300"
+        className="fixed left-0 right-0 z-40 lg:hidden overflow-hidden transition-all duration-300"
         style={{
+          top: "64px",
           maxHeight: menuOpen ? "280px" : "0px",
           opacity: menuOpen ? 1 : 0,
+          background: "#FAFAF8",
+          borderBottom: menuOpen ? "1px solid #E2DDD7" : "none",
         }}
       >
-        <div
-          className="px-6 py-6 flex flex-col gap-1"
-          style={{ background: "#FAFAF8", borderTop: "1px solid #E2DDD7" }}
-        >
+        <div className="px-6 py-4 flex flex-col">
           {isCase ? (
             <Link
               href="/#projects"
               className="text-sm text-[#6B6460] flex items-center gap-2 py-3"
               onClick={close}
             >
-              <span>←</span> All work
+              ← All work
             </Link>
           ) : (
-            <>
-              {["About", "Projects", "Experience", "Contact"].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-sm text-[#6B6460] py-3 border-b border-[#F0EDE8] last:border-0 hover:text-[#1C1917] transition-colors"
-                  onClick={close}
-                >
-                  {item}
-                </a>
-              ))}
-            </>
+            ["About", "Projects", "Experience", "Contact"].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="text-sm text-[#6B6460] py-3 border-b border-[#F0EDE8] last:border-0 hover:text-[#1C1917] transition-colors"
+                onClick={close}
+              >
+                {item}
+              </a>
+            ))
           )}
         </div>
       </div>
-    </nav>
+    </>
   );
 }
