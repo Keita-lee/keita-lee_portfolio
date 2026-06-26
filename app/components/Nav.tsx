@@ -62,8 +62,8 @@ export default function Nav() {
 
           {/* Burger button */}
           <button
-            className="lg:hidden flex-shrink-0"
-            style={{ width: 44, height: 44, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 6, background: "transparent", border: "none", cursor: "pointer", padding: 0 }}
+            className="lg:hidden flex-shrink-0 flex flex-col items-center justify-center"
+            style={{ width: 44, height: 44, gap: 6, background: "transparent", border: "none", cursor: "pointer", padding: 0 }}
             onClick={() => setMenuOpen((o) => !o)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
