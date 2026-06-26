@@ -25,6 +25,7 @@ export default function Nav() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
+
   const linkClass = `text-sm transition-colors ${scrolled || menuOpen ? "text-[#6B6460] hover:text-[#1C1917]" : "text-[#A09A95] hover:text-white"}`;
 
   const navLinks = isCase ? (
@@ -43,7 +44,9 @@ export default function Nav() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled || menuOpen ? "bg-[#FAFAF8]/95 backdrop-blur border-b border-[#E2DDD7]" : ""
+        scrolled || menuOpen
+          ? "bg-[#FAFAF8]/95 backdrop-blur border-b border-[#E2DDD7]"
+          : "bg-transparent md:bg-transparent bg-[#1C1917]/60 backdrop-blur-sm md:backdrop-blur-none"
       }`}>
         <div className="max-w-[1100px] mx-auto px-6 md:px-16 h-16 flex items-center justify-between">
 
@@ -65,17 +68,13 @@ export default function Nav() {
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
             <span className={`block w-5 h-[1.5px] transition-all duration-300 origin-center ${
-              menuOpen
-                ? "rotate-45 translate-y-[6.5px] bg-[#1C1917]"
-                : scrolled ? "bg-[#1C1917]" : "bg-white"
+              menuOpen ? "rotate-45 translate-y-[6.5px] bg-[#1C1917]" : scrolled ? "bg-[#1C1917]" : "bg-white"
             }`} />
             <span className={`block w-5 h-[1.5px] transition-all duration-300 ${
               menuOpen ? "opacity-0 bg-[#1C1917]" : scrolled ? "bg-[#1C1917]" : "bg-white"
             }`} />
             <span className={`block w-5 h-[1.5px] transition-all duration-300 origin-center ${
-              menuOpen
-                ? "-rotate-45 -translate-y-[6.5px] bg-[#1C1917]"
-                : scrolled ? "bg-[#1C1917]" : "bg-white"
+              menuOpen ? "-rotate-45 -translate-y-[6.5px] bg-[#1C1917]" : scrolled ? "bg-[#1C1917]" : "bg-white"
             }`} />
           </button>
         </div>
