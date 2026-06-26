@@ -16,87 +16,139 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close menu on route change
   useEffect(() => { setMenuOpen(false); }, [pathname]);
 
-  // Prevent body scroll when menu open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
+  const light = scrolled || menuOpen;
+  const close = () => setMenuOpen(false);
 
-  const linkClass = `text-sm transition-colors ${scrolled || menuOpen ? "text-[#6B6460] hover:text-[#1C1917]" : "text-[#A09A95] hover:text-white"}`;
-
-  const navLinks = isCase ? (
-    <Link href="/#projects" className={`${linkClass} flex items-center gap-2`} onClick={() => setMenuOpen(false)}>
-      <span>←</span> All work
-    </Link>
-  ) : (
-    <>
-      <a href="#about"      className={linkClass} onClick={() => setMenuOpen(false)}>About</a>
-      <a href="#projects"   className={linkClass} onClick={() => setMenuOpen(false)}>Projects</a>
-      <a href="#experience" className={linkClass} onClick={() => setMenuOpen(false)}>Experience</a>
-      <a href="#contact"    className={linkClass} onClick={() => setMenuOpen(false)}>Contact</a>
-    </>
-  );
+  // Burger bar colour depends on nav state
+  const barBg = light ? "#1C1917" : "#ffffff";
 
   return (
-    <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled || menuOpen
-          ? "bg-[#FAFAF8]/95 backdrop-blur border-b border-[#E2DDD7]"
-          : "bg-transparent md:bg-transparent bg-[#1C1917]/60 backdrop-blur-sm md:backdrop-blur-none"
-      }`}>
-        <div className="max-w-[1100px] mx-auto px-6 md:px-16 h-16 flex items-center justify-between">
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      style={light ? {
+        background: "rgba(250,250,248,0.95)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        borderBottom: "1px solid #E2DDD7",
+      } : undefined}
+    >
+      <div className="max-w-[1100px] mx-auto px-6 md:px-16 h-16 flex items-center justify-between">
 
-          {/* Logo — always inline */}
-          <Link href="/" className="font-serif text-lg hover:opacity-80 transition-opacity whitespace-nowrap flex-shrink-0">
-            <span className={`transition-colors ${scrolled || menuOpen ? "text-[#1C1917]" : "text-white"}`}>Keita</span>{" "}
-            <span className="text-[#01A896]">Lee</span>
-          </Link>
+        {/* Logo */}
+        <Link
+          href="/"
+          className="font-serif text-lg hover:opacity-80 transition-opacity whitespace-nowrap flex-shrink-0"
+        >
+          <span
+            className="transition-colors"
+            style={{ color: light ? "#1C1917" : "#ffffff" }}
+          >Keita</span>{" "}
+          <span style={{ color: "#01A896" }}>Lee</span>
+        </Link>
 
-          {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks}
-          </div>
-
-          {/* Mobile burger button */}
-          <button
-            className="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-[5px] shrink-0"
-            onClick={() => setMenuOpen((o) => !o)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-          >
-            <span className={`block w-5 h-[1.5px] transition-all duration-300 origin-center ${
-              menuOpen ? "rotate-45 translate-y-[6.5px] bg-[#1C1917]" : scrolled ? "bg-[#1C1917]" : "bg-white"
-            }`} />
-            <span className={`block w-5 h-[1.5px] transition-all duration-300 ${
-              menuOpen ? "opacity-0 bg-[#1C1917]" : scrolled ? "bg-[#1C1917]" : "bg-white"
-            }`} />
-            <span className={`block w-5 h-[1.5px] transition-all duration-300 origin-center ${
-              menuOpen ? "-rotate-45 -translate-y-[6.5px] bg-[#1C1917]" : scrolled ? "bg-[#1C1917]" : "bg-white"
-            }`} />
-          </button>
+        {/* Desktop nav links */}
+        <div className="hidden md:flex items-center gap-8">
+          {isCase ? (
+            <Link
+              href="/#projects"
+              className="text-sm flex items-center gap-2 transition-colors"
+              style={{ color: light ? "#6B6460" : "#A09A95" }}
+            >
+              <span>←</span> All work
+            </Link>
+          ) : (
+            <>
+              {["About", "Projects", "Experience", "Contact"].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-sm transition-colors hover:opacity-80"
+                  style={{ color: light ? "#6B6460" : "#A09A95" }}
+                >
+                  {item}
+                </a>
+              ))}
+            </>
+          )}
         </div>
 
-        {/* Mobile drawer */}
-        <div className={`md:hidden transition-all duration-300 overflow-hidden ${menuOpen ? "max-h-72 opacity-100" : "max-h-0 opacity-0"}`}>
-          <div className="bg-[#FAFAF8] border-t border-[#E2DDD7] px-6 py-6 flex flex-col gap-5">
-            {isCase ? (
-              <Link href="/#projects" className="text-sm text-[#6B6460] hover:text-[#1C1917] flex items-center gap-2" onClick={() => setMenuOpen(false)}>
-                <span>←</span> All work
-              </Link>
-            ) : (
-              <>
-                <a href="#about"      className="text-sm text-[#6B6460] hover:text-[#1C1917]" onClick={() => setMenuOpen(false)}>About</a>
-                <a href="#projects"   className="text-sm text-[#6B6460] hover:text-[#1C1917]" onClick={() => setMenuOpen(false)}>Projects</a>
-                <a href="#experience" className="text-sm text-[#6B6460] hover:text-[#1C1917]" onClick={() => setMenuOpen(false)}>Experience</a>
-                <a href="#contact"    className="text-sm text-[#6B6460] hover:text-[#1C1917]" onClick={() => setMenuOpen(false)}>Contact</a>
-              </>
-            )}
-          </div>
+        {/* Burger button — always visible on mobile via inline background pill */}
+        <button
+          className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px] shrink-0 rounded-lg"
+          style={!light ? { background: "rgba(0,0,0,0.4)" } : undefined}
+          onClick={() => setMenuOpen((o) => !o)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+        >
+          <span
+            className="block w-5 rounded-full transition-all duration-300 origin-center"
+            style={{
+              height: 2,
+              background: barBg,
+              transform: menuOpen ? "rotate(45deg) translateY(7px)" : "none",
+            }}
+          />
+          <span
+            className="block w-5 rounded-full transition-all duration-300"
+            style={{
+              height: 2,
+              background: barBg,
+              opacity: menuOpen ? 0 : 1,
+            }}
+          />
+          <span
+            className="block w-5 rounded-full transition-all duration-300 origin-center"
+            style={{
+              height: 2,
+              background: barBg,
+              transform: menuOpen ? "rotate(-45deg) translateY(-7px)" : "none",
+            }}
+          />
+        </button>
+      </div>
+
+      {/* Mobile slide-down drawer */}
+      <div
+        className="md:hidden overflow-hidden transition-all duration-300"
+        style={{
+          maxHeight: menuOpen ? "280px" : "0px",
+          opacity: menuOpen ? 1 : 0,
+        }}
+      >
+        <div
+          className="px-6 py-6 flex flex-col gap-1"
+          style={{ background: "#FAFAF8", borderTop: "1px solid #E2DDD7" }}
+        >
+          {isCase ? (
+            <Link
+              href="/#projects"
+              className="text-sm text-[#6B6460] flex items-center gap-2 py-3"
+              onClick={close}
+            >
+              <span>←</span> All work
+            </Link>
+          ) : (
+            <>
+              {["About", "Projects", "Experience", "Contact"].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-sm text-[#6B6460] py-3 border-b border-[#F0EDE8] last:border-0 hover:text-[#1C1917] transition-colors"
+                  onClick={close}
+                >
+                  {item}
+                </a>
+              ))}
+            </>
+          )}
         </div>
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 }
